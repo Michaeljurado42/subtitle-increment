@@ -45,9 +45,9 @@ if __name__ == "__main__":
     for caption_num in subtitle_dict.keys():
         new_subtitle_file.write("%s\n"%caption_num)
         new_start = subtitle_dict[caption_num]["start"] + increment_amount
-        new_start_string = new_start.strftime('%H:%M:%S,%f')
+        new_start_string = new_start.strftime('%H:%M:%S,%f')[:-3]
         new_end = subtitle_dict[caption_num]["end"] + increment_amount
-        new_end_string = new_end.strftime('%H:%M:%S,%f')
+        new_end_string = new_end.strftime('%H:%M:%S,%f')[:-3]
 
         new_subtitle_file.write("%s --> %s\n" % (new_start_string, new_end_string))
         for line in subtitle_dict[caption_num]["lines"]:
