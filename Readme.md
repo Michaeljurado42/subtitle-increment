@@ -1,13 +1,17 @@
 # Overview
 Command changes the timestamps of an srt file using a constant time increment. This can be useful if an srt file lags behind 
 or in front of a movie you want to watch
-## Instructions
-
+## Installation
 ```
-python subtitle_increment.py --help
-usage: subtitle_increment.py [-h] [--seconds SECONDS]
-                             [--milliseconds MILLISECONDS] [--output OUTPUT]
-                             file_name
+pip install subtitle-increment
+```
+
+## Usage
+```
+python -m subtitle_increment --help
+usage: __main__.py [-h] [--seconds SECONDS] [--milliseconds MILLISECONDS]
+                   [--output OUTPUT]
+                   file_name
 
 Increment subtitle file
 
@@ -27,8 +31,12 @@ optional arguments:
 
 ## Example
 ```
-python subtitle_increment.py La.Notte.1961.1080p.BluRay.x264-PublicHD.ita-Italian.srt -s -5 -ms -100 --output new_subtitles.srt
+python -m subtitle_increment La.Notte.1961.1080p.BluRay.x264-PublicHD.ita-Italian.srt -s -5 -ms -100 --output new_subtitles.srt
 ```
 
 This command decrements all the dialogue in the subtitle file by 5 seconds and 100 milliseconds. The output srt file is
 new_subtitle.srt
+
+## Quirks
+* Program assumes utf-8 encoding.
+* No Unit Tests since code is brutally simple

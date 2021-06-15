@@ -2,24 +2,17 @@ import datetime
 from _collections import OrderedDict
 import argparse
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Increment subtitle file')
-    parser.add_argument("file_name",  type = str, help = "Subtitle file to increment")
-    parser.add_argument('--seconds', "-s", type=float,
-                        help='seconds to increment dialogue', default=0)
-    parser.add_argument('--milliseconds', "-ms", type=float,
-                        help='milliseconds to increment dialogue', default=0)
-    parser.add_argument("--output", "-o",type=str, default="new_subtitle.srt", help = "output file name of incremented subtitle. Defaults to new_subtitle.srt" )
+def increment_subtitles(file_name: str, seconds: float, ms: float, new_file_name:str):
+    """
 
-    args = parser.parse_args()
-
-    file_name = args.file_name
-    new_file_name = args.output
-    seconds = args.seconds
-    ms = args.milliseconds
-
+    :param file_name:
+    :param seconds:
+    :param ms
+    :param new_file_name:
+    :return:
+    """
     increment_amount = datetime.timedelta(seconds=seconds, milliseconds=ms)
-    subtitle_file = open(file_name, "r")
+    subtitle_file = open(file_name, "r", encoding='utf8')
     subtitle_dict = OrderedDict()
     while True:
         caption_num = subtitle_file.readline().replace("\n", "")
@@ -41,7 +34,7 @@ if __name__ == "__main__":
                                       "lines": dialogue_lines}
 
     print(subtitle_dict)
-    new_subtitle_file = open(new_file_name, "w")
+    new_subtitle_file = open(new_file_name, "w", encoding='utf8')
     for caption_num in subtitle_dict.keys():
         new_subtitle_file.write("%s\n"%caption_num)
         new_start = subtitle_dict[caption_num]["start"] + increment_amount
