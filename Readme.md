@@ -38,5 +38,5 @@ This command decrements all the dialogue in the subtitle file by 5 seconds and 1
 new_subtitle.srt
 
 ## Quirks
-* Program assumes utf-8 encoding.
+* Program assumes utf-8 encoding. (If you get an encoding error just copy the contents into another newly generated plain text file)
 * No Unit Tests since code is brutally simple
